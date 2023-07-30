@@ -1,0 +1,45 @@
+{
+  "name": "ergus-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 8000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/checkbox": "^1.6.8",
+    "@chakra-ui/react": "^1.8.6",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@hookform/resolvers": "^2.8.8",
+    "@types/react-datepicker": "^4.4.1",
+    "@types/react-table": "^7.7.10",
+    "axios": "^0.26.1",
+    "chakra-react-select": "^3.3.6",
+    "framer-motion": "^6",
+    "moment": "^2.29.4",
+    "next": "12.1.0",
+    "next-auth": "^4.3.1",
+    "next-i18next": "^10.5.0",
+    "nookies": "^2.5.2",
+    "react": "17.0.2",
+    "react-datepicker": "^4.7.0",
+    "react-dom": "17.0.2",
+    "react-error-boundary": "^3.1.4",
+    "react-hook-form": "^7.28.0",
+    "react-i18next": "^11.18.5",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.16",
+    "react-table": "^7.7.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.21",
+    "@types/react": "17.0.40",
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0",
+    "typescript": "4.6.2"
+  }
+}

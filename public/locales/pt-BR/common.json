@@ -1,0 +1,26 @@
+{
+  "LOGIN_PAGE_TITLE": "Acesse com seu login",
+  "USERNAME": "Usuário",
+  "PASSWORD": "Senha",
+  "LOGIN_PAGE_BUTTON": "ENTRAR",
+  "FORGOT_PASSWORD": "Esqueci minha senha",
+  "NOT_REGISTERED": "Ainda não sou cadastrado",
+  "KEEP_CONNECTED": "Continuar conectado",
+  "SEARCH": "Pesquisar...",
+  "RECORD": "CADASTRO",
+
+  "ACTIONS": "AÇÕES",
+  "SUBMIT": "Salvar",
+
+  "SUCCESS": "Sucesso",
+  "ERROR": "Atenção",
+
+  "SUCCESS_EDIT_DESCRIPTION": "Item editado com sucesso!",
+  "SUCCESS_INSERT_DESCRIPTION": "Item adicionado com sucesso!",
+
+  "ERROR_EDIT_DESCRIPTION": "Não foi possível editar esse item!",
+  "ERROR_INSERT_DESCRIPTION": "Não foi possível adicionar esse item!",
+  "ERROR_DELETE_DESCRIPTION": "Não foi possível excluir esse item!"
+
+}
+

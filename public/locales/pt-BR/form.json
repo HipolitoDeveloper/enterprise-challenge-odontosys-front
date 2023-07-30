@@ -1,0 +1,23 @@
+{
+  "ADD": "Novo Cadastro",
+  "SUBMIT": "Salvar",
+  "SUCCESS":"Sucesso!",
+  "SUCCESS_INSERT":"Seu item foi criado!",
+  "SUCCESS_EDIT":"Seu item foi editado!",
+  "SUCCESS_DELETE":"Seu item foi excluído!",
+
+
+  "MATRICULA_PLACEHOLDER": "Digite a Matricula",
+  "MATRICULA_LABEL": "Matricula",
+
+  "NOME_PLACEHOLDER": "Digite o nome",
+  "NOME_LABEL": "Nome",
+
+  "CRM_PLACEHOLDER": "Digite o CRM",
+  "CRM_LABEL": "CRM",
+
+  "MATRICULA_ERROR": "Por favor, insira a matricula",
+  "NOME_ERROR": "Por favor, insira o nome",
+  "CRM_ERROR": "Por favor, insira o CRM"
+
+}
