@@ -1,3 +1,9 @@
 {
-  "currentTeam": "team_0EmEFjLeJG3bSG387gRPcTgz"
+  "currentTeam": "team_0EmEFjLeJG3bSG387gRPcTgz",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
 }
