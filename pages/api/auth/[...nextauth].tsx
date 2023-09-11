@@ -23,10 +23,8 @@ const options: NextAuthOptions = {
                         if (true) {
                             return {
                                 id: "",
-                                accessToken: 'autorizado'
+                                accessToken: "autorizado"
                             }
-                        } else {
-                            return null
                         }
 
                     } catch (error: any) {
