@@ -31,7 +31,7 @@ const Odontosys: NextPageWithAuth = () => {
 
 export default Odontosys
 
-Odontosys.auth = true;
+// Odontosys.auth = true;
 
 export const getServerSideProps = async ({locale, ...context}: NextPageContext) => {
     const {req} = context;
