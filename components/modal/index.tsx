@@ -5,7 +5,7 @@ import ErrorModal from "./ErrorModal";
 import SearchModal from "./SearchModal";
 
 export type TModal = TSearchModal & TErrorModal & {
-    variant?: "error" | "alert" | 'send_email' | 'search';
+    variant?: "error" | "alert" | 'search';
     visible?: boolean;
     title?: string;
     text?: string;
