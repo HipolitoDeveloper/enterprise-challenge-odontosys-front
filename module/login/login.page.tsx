@@ -38,14 +38,10 @@ export const LoginPage: NextPage = () => {
     }, [])
 
     const onSigIn = async () => {
-        handleLoading(true)
+        // handleLoading(true)
         try {
-            await signIn('credentials', {
-                "login": "progettata",
-                "password": "123mudar",
-                callbackUrl: `${window.location.origin}/odontosys`
-            });
-            handleLoading(false)
+     await router.push('/odontosys')
+            // handleLoading(false)
 
         } catch (e) {
             console.error(e)

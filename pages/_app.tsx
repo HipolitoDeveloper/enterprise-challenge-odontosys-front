@@ -39,15 +39,11 @@ function MyApp({Component, pageProps: {session, ...pageProps}}: any) {
                         box-sizing: border-box;
                       }
                     `}</style>
-                    {Component.auth ? (
-                        <AuthProvider>
-                            <Component {...pageProps} />
-                        </AuthProvider>
-                    ) : (
-                        <LayoutProvider>
-                            <Component {...pageProps} />
-                        </LayoutProvider>
-                    )}
+                    <LayoutProvider>
+                    <AuthProvider>
+                        <Component {...pageProps} />
+                    </AuthProvider>
+                    </LayoutProvider>
                 </ChakraProvider>
             </SessionProvider>
         </QueryClientProvider>
