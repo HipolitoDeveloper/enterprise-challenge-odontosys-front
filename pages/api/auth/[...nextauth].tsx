@@ -2,10 +2,11 @@ import NextAuth, {NextAuthOptions} from "next-auth"
 import {NextApiRequest, NextApiResponse} from 'next';
 
 import CredentialsProvider from "next-auth/providers/credentials"
-import {apiPost, AxiosClient} from "../../../hooks/api/useApi";
-import axios from "axios";
-import {Constants} from "../../../common/Constants";
 
+type User = {
+    id: string;
+    accessToken: string;
+};
 
 const options: NextAuthOptions = {
     pages: {
@@ -17,16 +18,12 @@ const options: NextAuthOptions = {
         CredentialsProvider({
             credentials: {},
                 name: "Credentials",
-                async authorize(credentials) {
+                async authorize(credentials): Promise<User | null> {
                     try {
-                        // const {data: responseData} = await AxiosAuth.post(Constants.BASE_URL_AUTH, credentials);
-
-                        // const {retorno, sucesso} = responseData
                         if (true) {
                             return {
-                                accessToken: 'autorizado',
-                                id: "", options: undefined, type: "credentials",
-
+                                id: "",
+                                accessToken: 'autorizado'
                             }
                         } else {
                             return null
