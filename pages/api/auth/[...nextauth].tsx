@@ -29,7 +29,7 @@ const options: NextAuthOptions = {
     callbacks: {
         async jwt({token, user}: any) {
             if (user) {
-                token.accessToken = user?.token
+                token.accessToken = ""
             }
 
             return token
