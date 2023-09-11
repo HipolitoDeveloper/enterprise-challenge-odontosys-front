@@ -91,6 +91,7 @@ export const PatientPage: React.FC<Props> = ({id}) => {
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
+        if(patient && id !== undefined) {
             setValue(`nm_paciente`, patient.nm_paciente)
             setValue(`ds_sexo`, patient.ds_sexo)
             setValue(`dt_nascimento`, new Date(patient.dt_nascimento))
@@ -98,6 +99,7 @@ export const PatientPage: React.FC<Props> = ({id}) => {
             setValue(`ds_altura`, patient.ds_altura)
             setValue(`clinica_id`, patient.clinica_id)
             setLoaded(true)
+        }
     }, [patient])
 
     const onSubmit = async (data: any) => {
