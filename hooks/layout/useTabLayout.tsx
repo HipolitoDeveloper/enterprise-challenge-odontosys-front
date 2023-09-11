@@ -7,28 +7,6 @@ import Loading from "../../components/layouts/Loading";
 import {labelConversor, Pages, routesGroup} from "../../common/MenuItems";
 import {useTabs} from "./useTabs";
 import DynamicPage from "../../components/layouts/DynamicPage";
-import {IRoute} from "../../interfaces/IRoute";
-import {DashboardPage} from "../../module/dashboard";
-import {PatientsPage, PatientPage} from "../../module/form/patient";
-import {DoctorPage, DoctorsPage} from "../../module/form/doctor";
-import {AnnouncementPage, AnnouncementsPage} from "../../module/form/announcement";
-import {PricePage, PricesPage} from "../../module/form/price";
-import {SkuPage, SkusPage} from "../../module/form/sku";
-import {TraywehubsPage} from "../../module/form/traywehub/traywehubs.page";
-import {TraywehubPage} from "../../module/form/traywehub";
-import {ProvidersPage} from "../../module/form/provider/providers.page";
-import {ProviderPage} from "../../module/form/provider";
-import {ProducersPage} from "../../module/form/producer/producers.page";
-import {ProducerPage} from "../../module/form/producer";
-import {HorizontalVariationPage, HorizontalVariationsPage} from "../../module/form/horizontal_variation";
-import {VerticalVariationPage, VerticalVariationsPage} from "../../module/form/vertical_variation";
-import {GridPage, GridsPage} from "../../module/form/grid";
-import {CoinPage, CoinsPage} from "../../module/form/coin";
-import {MeasureUnitPage, MeasureUnitsPage} from "../../module/form/measureUnit";
-import {StockUnitPage, StockUnitsPage} from "../../module/form/stockUnit";
-import {bool} from "yup";
-
-// import Modal, { IModal } from "../../components/modal";
 
 export interface ICurrentPage {
     page: Pages | string;

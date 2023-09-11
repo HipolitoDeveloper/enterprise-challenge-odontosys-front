@@ -37,10 +37,10 @@ export const getServerSideProps = async ({locale, ...context}: NextPageContext) 
     const {req} = context;
     const session = await getSession({req});
 
-    nookies.set({...context}, 'accessToken', session?.accessToken as string, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: '/',
-    });
+    // nookies.set({...context}, 'accessToken', session?.accessToken as string, {
+    //     maxAge: 30 * 24 * 60 * 60,
+    //     path: '/',
+    // });
 
     return {
         props: {
