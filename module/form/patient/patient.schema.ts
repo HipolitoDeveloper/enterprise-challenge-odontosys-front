@@ -1,144 +1,118 @@
 import * as yup from "yup";
 import {IFormProperty} from "../../../interfaces/IFormProperty";
-import i18n from "i18next";
-import { IColumn } from "../../../components/table/@types/Table.types";
+import {IColumn} from "../../../components/table/@types/Table.types";
 
 export const patientForm: IFormProperty[] = [
     {
-        name: 'code',
-        label: "COD_LABEL",
-        order: 0,
-        colSpan: 1,
-        fieldType: "input",
-        type: 'text',
-        placeholder: "COD_PLACEHOLDER",
-        width: '30%',
-        readOnly: true,
-
-    },
-    {
-        name: 'name',
-        label: "NAME_LABEL",
+        name: 'nm_paciente',
+        label: "NM_PACIENTE_LABEL",
         order: 2,
-        colSpan: 5,
+        colSpan: 2,
         fieldType: "input",
-        type: 'text',
-        placeholder: "NAME_PLACEHOLDER",
-        width: '90%',
+        type: 'number',
+        placeholder: "NM_PACIENTE_PLACEHOLDER",
+        width: '30%',
     },
     {
-        name: 'parentId',
-        label: "PARENTID_LABEL",
+        name: 'ds_sexo',
+        label: "DS_SEXO_LABEL",
         order: 4,
-        colSpan: 5,
+        colSpan: 3,
         fieldType: "select",
-        placeholder: "PARENTID_PLACEHOLDER",
-        options: [{name: "default", value: 1}],
+        placeholder: "DS_SEXO_PLACEHOLDER",
+        options: [{name: "Masculino", value: 'M'}, {name: "Feminino", value: 'F'}],
         width: '70%',
 
     },
     {
-        name: 'externalCode',
-        label: "EXTERNALCODE_LABEL",
+        name: 'dt_nascimento',
+        label: "DT_NASCIMENTO_LABEL",
         order: 3,
-        colSpan: 1,
-        fieldType: "input",
+        colSpan: 3,
+        fieldType: "date",
         type: 'text',
-        placeholder: "EXTERNALCODE_PLACEHOLDER",
+        placeholder: "DT_NASCIMENTO_PLACEHOLDER",
         width: '50%',
+    },
+    {
+        name: 'ds_peso',
+        label: "DS_PESO_LABEL",
+        order: 3,
+        colSpan: 2,
+        fieldType: "input",
+        type: 'number',
+        placeholder: "DS_PESO_PLACEHOLDER",
+        width: '50%',
+    },
+    {
+        name: 'ds_altura',
+        label: "DS_ALTURA_LABEL",
+        order: 3,
+        colSpan: 2,
+        fieldType: "input",
+        type: 'number',
+        placeholder: "DS_ALTURA_PLACEHOLDER",
+        width: '50%',
+    },
+    {
+        name: 'office',
+        label: "CLINICA_ID_LABEL",
+        order: 4,
+        colSpan: 5,
+        fieldType: "select",
+        placeholder: "CLINICA_ID_PLACEHOLDER",
+        width: '70%',
 
     },
-    {
-        name: 'text.description',
-        label: "DESC_LABEL",
-        order: 0,
-        colSpan: 6,
-        fieldType: "input",
-        type: 'text',
-        placeholder: 'DESC_PLACEHOLDER',
-        width: '95%',
-    },
 
-    {
-        name: 'text.longDescription',
-        label: "DESCLONG_LABEL",
-        order: 5,
-        colSpan: 6,
-        fieldType: "input",
-        type: 'text',
-        placeholder: "DESCLONG_PLACEHOLDER",
-        width: '100%',
-    },
-
-    {
-        name: 'text.metaTitle',
-        label: "METATITLE_LABEL",
-        order: 5,
-        colSpan: 4,
-        fieldType: "input",
-        type: 'text',
-        placeholder: "METATITLE_PLACEHOLDER",
-        width: '90%',
-    },
-    {
-        name: 'text.metaKeyword',
-        label: "METAKEYWORD_LABEL",
-        order: 0,
-        colSpan: 4,
-        fieldType: "input",
-        type: 'text',
-        placeholder: 'METAKEYWORD_PLACEHOLDER',
-        width: '90%',
-    },
-    {
-        name: 'text.metaDescription',
-        label: "METADESCRIPTION_LABEL",
-        order: 0,
-        colSpan: 4,
-        fieldType: "input",
-        type: 'text',
-        placeholder: 'METADESCRIPTION_PLACEHOLDER',
-        width: '90%',
-    },
 ]
 
 export const patientColumns: IColumn[] = [
     {
-        accessor: 'code',
-        Header: "COD_LABEL",
+        accessor: 'nm_paciente',
+        Header: "NM_PACIENTE_LABEL",
         width: '60%',
     },
     {
-        accessor: 'externalCode',
-        Header: "EXTERNALCODE_LABEL",
+        accessor: 'ds_sexo',
+        Header: "DS_SEXO_LABEL",
         width: '70%',
+
     },
     {
-        accessor: 'name',
-        Header: "NAME_LABEL",
-        width: '60%',
+        accessor: 'dt_nascimento',
+        Header: "DT_NASCIMENTO_LABEL",
+        width: '50%',
+        formatter: 'DD/MM/yyyy'
     },
     {
-        accessor: 'parent.name',
-        Header: "PARENTID_LABEL",
-        width: '60%',
+        accessor: 'ds_peso',
+        Header: "DS_PESO_LABEL",
+        width: '50%',
+    },
+    {
+        accessor: 'ds_altura',
+        Header: "DS_ALTURA_LABEL",
+        width: '50%',
+    },
+    {
+        accessor: 'office.nr_local',
+        Header: "CLINICA_ID_LABEL",
+        width: '70%',
+
     },
 
 ]
 
 
 const patientSchema = yup.object().shape({
-    code: yup.string().required("COD_ERROR"),
-    name: yup.string().required('NAME_ERROR'),
-    externalCode: yup.string().required('CODEXT_ERROR'),
-    parentId: yup.mixed().optional(),
-    text: yup.object().shape({
-        longDescription: yup.string().required("LONGDESCRIPTION_ERROR"),
-        description: yup.string().required("DESC_ERROR"),
-        metaTitle: yup.string().required('METATITLE_ERROR'),
-        metaKeyword: yup.string().required('METAKEYWORD_ERROR'),
-        metaDescription: yup.string().required('METADESCRIPTION_ERROR'),
-    })
+    nm_paciente: yup.number().required('NM_PACIENTE_ERROR'),
+    ds_sexo: yup.string().required('DS_SEXO_ERROR'),
+    dt_nascimento: yup.string().required('DT_NASCIMENTO_ERROR'),
+    ds_peso: yup.number().required('DS_PESO_ERROR'),
+    ds_altura: yup.number().required('DS_ALTURA_ERROR'),
+    office: yup.mixed().required('CLINICA_ID_ERROR')
+
 
 })
 

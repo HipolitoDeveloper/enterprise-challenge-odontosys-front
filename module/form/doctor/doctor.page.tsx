@@ -109,10 +109,12 @@ export const DoctorPage: React.FC<Props> = ({id}) => {
                         duration: 9000,
                         isClosable: true,
                     })
+                    handleCurrentPage(Pages.Doctors, null, false)
+
                 },
                 "EDIT": async () => {
                     await onUpdate({ ...data, id: id})
-                    handleCurrentPage(Pages.DoctorForm, null, false)
+                    handleCurrentPage(Pages.Doctors, null, false)
                     toast({
                         title: tCommon("SUCCESS"),
                         description: tCommon("SUCCESS_EDIT_DESCRIPTION"),
@@ -149,7 +151,7 @@ export const DoctorPage: React.FC<Props> = ({id}) => {
                         items={doctorForm}
                         resetForm={reset}
                         submitButtonName={t("SUBMIT")}
-                        loading={(isLoading) && (!loaded)}
+                        loading={(isLoading)}
                         control={control}
                         lastPage={Pages.Doctors}
                         getFieldState={getFieldState}/>

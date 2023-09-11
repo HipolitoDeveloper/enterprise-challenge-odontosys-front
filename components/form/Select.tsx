@@ -4,6 +4,13 @@ import * as IconFA from "react-icons/fa";
 import React from "react";
 import {UseFormRegister, UseFormRegisterReturn} from "react-hook-form";
 import {useTranslation} from "next-i18next";
+import {queryClient} from "../../services/QueryClient";
+import {Constants} from "../../common/Constants";
+import {useGenericQuery} from "../../hooks/react-query/useGenericQuery";
+import {getOffices} from "../../module/form/office/office.service";
+import {getDoctors} from "../../module/form/doctor/doctor.service";
+import {getPatients} from "../../module/form/patient/patient.service";
+import {getProcedures} from "../../module/form/procedures/procedure.service";
 
 
 interface Props extends ChakraSelectProps {
@@ -34,6 +41,64 @@ const Select: React.FC<Props> = ({
                                      defaultValue
                                  }) => {
 
+    let officesSelect: any = queryClient.getQueryData(Constants.URL_OFFICE)
+    const {
+    } = useGenericQuery(Constants.URL_OFFICE, async () => await getOffices(), {
+        enabled: officesSelect === undefined && name === 'office'
+    })
+    let doctorsSelect: any = queryClient.getQueryData(Constants.URL_DOCTOR)
+    const {
+    } = useGenericQuery(Constants.URL_DOCTOR, async () => await getDoctors(), {
+        enabled: doctorsSelect === undefined && name === 'doctor_id'
+    })
+
+    let patientsSelect: any = queryClient.getQueryData(Constants.URL_PATIENT)
+    const {
+    } = useGenericQuery(Constants.URL_PATIENT, async () => await getPatients(), {
+        enabled: patientsSelect === undefined && name === 'patient_id'
+    })
+
+    let proceduresSelect: any = queryClient.getQueryData(Constants.URL_PROCEDURE)
+    const {
+    } = useGenericQuery(Constants.URL_PROCEDURE, async () => await getProcedures(), {
+        enabled: proceduresSelect === undefined && name === 'procedure_id'
+    })
+
+    if(name === 'office' ) {
+        options = officesSelect?.map((row: any) => {
+            return ({
+                name: row.nr_local,
+                value: JSON.stringify(row)
+            })
+        }) ?? options
+    }
+
+    if(name === 'doctor_id' ) {
+        options = doctorsSelect?.map((row: any) => {
+            return ({
+                name: row.nome,
+                value: JSON.stringify(row)
+            })
+        }) ?? options
+    }
+
+    if(name === 'patient_id' ) {
+        options = patientsSelect?.map((row: any) => {
+            return ({
+                name: row.nm_paciente,
+                value: JSON.stringify(row)
+            })
+        }) ?? options
+    }
+
+    if(name === 'procedure_id' ) {
+        options = proceduresSelect?.map((row: any) => {
+            return ({
+                name: row.nm_procedimento,
+                value: JSON.stringify(row)
+            })
+        }) ?? options
+    }
 
     const {t} = useTranslation("form");
     return (

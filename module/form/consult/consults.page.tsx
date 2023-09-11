@@ -3,23 +3,23 @@ import {useToast} from "@chakra-ui/react";
 import {useRouter} from "next/router";
 import {IAction} from "../../../components/table/@types/Table.types";
 import {Constants} from "../../../common/Constants";
-import {deletePatient, getPatients} from "./patient.service";
+import {deleteConsult, getConsults} from "./consult.service";
 import {useGenericMutation} from "../../../hooks/react-query/useGenericMutation";
 import TableLayout from "../../../components/layouts/TableLayout";
 import {useGenericQuery} from "../../../hooks/react-query/useGenericQuery";
 import {useTabLayout} from "../../../hooks/layout/useTabLayout";
 import { Pages } from "../../../common/MenuItems";
-import {patientColumns} from "./patient.schema";
+import {consultColumns} from "./consult.schema";
 
-export const PatientsPage = ({}) => {
+export const ConsultsPage = ({}) => {
         const {
             isLoading,
             data = [],
-        } = useGenericQuery(Constants.URL_PATIENT, async () => await getPatients(), {
+        } = useGenericQuery(Constants.URL_CONSULT, async () => await getConsults(), {
             retry: false
         })
 
-        const onDelete: any = useGenericMutation(async (data) => await deletePatient(data), Constants.URL_PATIENT, (oldData, newData) => oldData.map((item: any) => {
+        const onDelete: any = useGenericMutation(async (data) => await deleteConsult(data), Constants.URL_CONSULT, (oldData, newData) => oldData.map((item: any) => {
             if (item.id === newData.id) {
                 item.active = false
             }
@@ -31,14 +31,14 @@ export const PatientsPage = ({}) => {
         const toast = useToast()
         const {handleLoading, handleCurrentPage, handleModal, modal} = useTabLayout()
 
-        const columns = patientColumns.map(({Header, ...column}) => {
+        const columns = consultColumns.map(({Header, ...column}) => {
             return {Header: t(Header), ...column}
         })
 
         const action: IAction =
             {
                 edit: (rowData: any = 0) => {
-                    handleCurrentPage(Pages.PatientForm, {id: rowData.original.id}, false)
+                    handleCurrentPage(Pages.ConsultForm, {id: rowData.original.id}, false)
                 },
                 delete: async (rowData: any = 0) => {
                     try {
@@ -73,18 +73,18 @@ export const PatientsPage = ({}) => {
 
 
         return (
-            <TableLayout title="Pacientes"
+            <TableLayout title="Consultas"
                          columns={columns}
                          data={data}
                          loading={isLoading}
                          action={action}
-                         onInsert={() =>  handleCurrentPage(Pages.PatientForm)}
+                         onInsert={() =>  handleCurrentPage(Pages.ConsultForm)}
             >
             </TableLayout>
         );
     }
 ;
-// PatientsPage.auth = true;
+// ConsultsPage.auth = true;
 
 
 

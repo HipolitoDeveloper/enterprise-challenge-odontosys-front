@@ -2,23 +2,22 @@ import {useTranslation} from "next-i18next";
 import FormLayout from "../../../components/layouts/FormLayout";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import patientSchema, {patientForm} from "./patient.schema";
+import ConsultSchema, {consultForm} from "./consult.schema";
 import {useRouter} from "next/router";
 import {useQuery} from "react-query";
 import {Constants} from "../../../common/Constants";
-import {getPatient, postPatient, putPatient} from "./patient.service";
+import {getConsult, postConsult, putConsult} from "./consult.service";
 import {useGenericMutation} from "../../../hooks/react-query/useGenericMutation";
 import {useToast} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import {useTabLayout} from "../../../hooks/layout/useTabLayout";
 import {Pages} from "../../../common/MenuItems";
-import {consultForm} from "../consult/consult.schema";
-import {IFormProperty} from "../../../interfaces/IFormProperty";
 import {queryClient} from "../../../services/QueryClient";
 import {useGenericQuery} from "../../../hooks/react-query/useGenericQuery";
+import {getDoctor, getDoctors} from "../doctor/doctor.service";
+import {IFormProperty} from "../../../interfaces/IFormProperty";
+import {getPatients} from "../patient/patient.service";
 import {getProcedures} from "../procedures/procedure.service";
-import {getOffices} from "../office/office.service";
-import moment from "moment";
 
 const defaultValues = {
     id: "",
@@ -41,7 +40,7 @@ interface Props {
     id: any
 }
 
-export const PatientPage: React.FC<Props> = ({id}) => {
+export const ConsultFormPage: React.FC<Props> = ({id}) => {
 
     //Call HOOKS
     const {t} = useTranslation("form");
@@ -62,23 +61,23 @@ export const PatientPage: React.FC<Props> = ({id}) => {
         formState: {errors}
     } = useForm({
         // defaultValues,
-        resolver: yupResolver(patientSchema),
+        resolver: yupResolver(ConsultSchema),
     })
 
     //CRUD queries and mutations
     const {
         isLoading,
-        data: patient = {},
+        data: consult = {},
         isSuccess,
-    } = useQuery([Constants.URL_PATIENT, id], async () => await getPatient(id), {
+    } = useQuery([Constants.URL_CONSULT, id], async () => await getConsult(id), {
         enabled: id !== undefined,
     })
     const {
         mutateAsync: onInsert,
-    }: any = useGenericMutation(async (data) => await postPatient(data), Constants.URL_PATIENT, (oldData, newData) => [...oldData, newData])
+    }: any = useGenericMutation(async (data) => await postConsult(data), Constants.URL_CONSULT, (oldData, newData) => [...oldData, newData])
     const {
         mutateAsync: onUpdate,
-    }: any = useGenericMutation(async (data) => await putPatient(data), Constants.URL_PATIENT, ((oldData, newData) => {
+    }: any = useGenericMutation(async (data) => await putConsult(data), Constants.URL_CONSULT, ((oldData, newData) => {
         return oldData.map((data: any) => {
             if (data.id === newData.id) {
                 data = {...newData}
@@ -91,24 +90,29 @@ export const PatientPage: React.FC<Props> = ({id}) => {
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
-            setValue(`nm_paciente`, patient.nm_paciente)
-            setValue(`ds_sexo`, patient.ds_sexo)
-            setValue(`dt_nascimento`, new Date(patient.dt_nascimento))
-            setValue(`ds_peso`, patient.ds_peso)
-            setValue(`ds_altura`, patient.ds_altura)
-            setValue(`clinica_id`, patient.clinica_id)
+        if (Object.keys(consult).length > 0 && operation === 'EDIT') {
+            setValue(`id`, consult.id);
+            setValue(`doctor_id`, consult.doctor_id);
+            setValue(`patient_id`, consult.patient_id);
+            setValue(`procedure_id`, consult.patient_id);
+            setValue(`dt_hr_consulta`, new Date(consult.dt_hr_consulta))
+            setValue(`nr_consultorio`, consult.nr_consultorio);
             setLoaded(true)
-    }, [patient])
+
+        }
+    }, [consult])
+
 
     const onSubmit = async (data: any) => {
-        data.dt_nascimento = new Date(data.dt_nascimento).toISOString()
-
         const operations = {
             "ADD": async () => {
                 data.active = true
                 await onInsert({
                     ...data,
-                    office: JSON.parse(data.office)
+                    doctor: JSON.parse(data.doctor_id),
+                    procedure: JSON.parse(data.procedure_id),
+                    patient: JSON.parse(data.patient_id)
+
                 })
                 reset()
                 toast({
@@ -118,11 +122,9 @@ export const PatientPage: React.FC<Props> = ({id}) => {
                     duration: 9000,
                     isClosable: true,
                 })
-                handleCurrentPage(Pages.Patients, null, false)
-
             },
             "EDIT": async () => {
-                handleCurrentPage(Pages.Patients, null, false)
+                handleCurrentPage(Pages.Consults, null, false)
                 await onUpdate(data)
                 toast({
                     title: tCommon("SUCCESS"),
@@ -151,7 +153,7 @@ export const PatientPage: React.FC<Props> = ({id}) => {
     }
 
     return (
-        <FormLayout title={'Pacientes'}
+        <FormLayout title={'Consulta'}
                     templateColumns='repeat(4, 300px)'
                     templateRows='repeat(3, 100px)'
                     onSubmit={handleSubmit(onSubmit)}
@@ -160,8 +162,8 @@ export const PatientPage: React.FC<Props> = ({id}) => {
                     getFieldState={getFieldState}
                     control={control}
                     resetForm={reset}
-                    lastPage={Pages.Patients}
-                    items={patientForm} submitButtonName={t("SUBMIT")}/>
+                    lastPage={Pages.Consults}
+                    items={consultForm} submitButtonName={t("SUBMIT")}/>
     );
 };
 

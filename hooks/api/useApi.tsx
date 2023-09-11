@@ -11,7 +11,8 @@ const cookies = parseCookies();
 
 const headers = {
     headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json",
+
     },
 };
 export const apiPost = async (url: string, data?: any) => {
@@ -22,7 +23,7 @@ export const apiPost = async (url: string, data?: any) => {
     // }
 
     try {
-        return await AxiosClient.post(url, data)
+        return await AxiosClient.post(url, data,headers)
 
     } catch (error: any) {
         throw HandlerError(error.response.data.retorno.erros ?? error.response.data.retorno)
@@ -53,7 +54,7 @@ export const apiPut = async (url: string, data?: any) => {
     //     }
     // }
     try {
-        return await AxiosClient.put(url, data)
+        return await AxiosClient.put(url, data, headers)
 
     } catch (error: any) {
         throw HandlerError(error.response.data.retorno.erros ?? [JSON.stringify(error.response.data.retorno)])

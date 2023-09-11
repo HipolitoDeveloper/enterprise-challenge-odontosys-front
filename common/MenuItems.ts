@@ -9,6 +9,12 @@ export enum Pages {
     DoctorForm = 'doctor',
     Patients = "patients",
     PatientForm = "patient",
+    Offices = "offices",
+    OfficeForm = "office",
+    Consults = "consults",
+    ConsultForm = "consult",
+    Procedures = "procedures",
+    ProcedureForm = "procedure",
     // Clinics = "clinics",
     // ClinicForm = "clinic",
     // Appointments = "appointments",
@@ -71,6 +77,24 @@ export const MenuItems: IMenuItem[] = [
                 type: "unique",
                 items: []
             },
+            {
+                name: "Consultórios",
+                route: Pages.Offices,
+                type: "unique",
+                items: []
+            },
+            {
+                name: "Consultas",
+                route: Pages.Consults,
+                type: "unique",
+                items: []
+            },
+            {
+                name: "Procedimentos",
+                route: Pages.Procedures,
+                type: "unique",
+                items: []
+            },
         ]
     },
     {
@@ -96,6 +120,12 @@ export const labelConversor = (page: Pages) => {
         [Pages.DoctorForm]: 'Médico',
         [Pages.Patients]: 'Pacientes',
         [Pages.PatientForm]: 'Paciente',
+        [Pages.Offices]: 'Consultórios',
+        [Pages.OfficeForm]: 'Consultório',
+        [Pages.Consults]: 'Consultas',
+        [Pages.ConsultForm]: 'Consulta',
+        [Pages.Procedures]: 'Procedimentos',
+        [Pages.ProcedureForm]: 'Procedimento'
         // [Pages.Clinics]: 'Clínicas',
         // [Pages.Clinic]: 'Clínica',
         // [Pages.Appointments]: 'Consultas',

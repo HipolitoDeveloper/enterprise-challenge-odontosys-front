@@ -1,5 +1,5 @@
 import {Box, Center, Flex, GridItem, SimpleGrid, Skeleton, Text} from "@chakra-ui/react";
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import * as IconFA from "react-icons/fa";
 import {IFormProperty} from "../../interfaces/IFormProperty";
 import {Controller} from "react-hook-form";
@@ -89,12 +89,16 @@ const FormLayout: React.FC<Props> = ({
                 </Center>
             </Checkbox>,
             "date": () => (
+                <Flex align="center" direction="column" justify="flex-end"  w={width ?? '100%'} h='100%' >
                 <Controller
                     name={name}
                     control={control}
                     render={({field: {onChange, value}}) => (
                         <DatePicker selected={value}
-                                    onChange={onChange}
+                                    onChange={(valuee) => {
+                                        console.log(valuee)
+                                        onChange(valuee)
+                                    }}
                                     dateFormat="dd/mM/yyyy"
                                     customInput={<DatePickerInput placeholder={t(placeholder)}
                                                                   name={name}
@@ -102,6 +106,7 @@ const FormLayout: React.FC<Props> = ({
                                                                   error={error}
                                                                   label={t(label)} width={"90%"}/>}/>)}
                 />
+                </Flex>
             ),
             "def": () => <Input placeholder={t(placeholder)} name={name} variant='form'
                                 label={t(label)} width={width} register={register(name)}/>
@@ -111,21 +116,23 @@ const FormLayout: React.FC<Props> = ({
         return inputs[fieldType]() || inputs.def
     }
 
-    const renderInput = items.map(({colSpan, width, ...item}, index) => (
-        <GridItem  key={index} h='120px' colSpan={colSpan ?? 1}>
-            {loading ? (
-                <Box mt={10}>
-                    <Skeleton
-                        height='50px'
-                        w='20rem'
-                    />
-                </Box>
-            ) : (
-                renderInputComponent(item)
+    const renderInput = useMemo(() => (
+        items.map(({colSpan, width, ...item}, index) => (
+            <GridItem  key={index} h='120px' colSpan={colSpan ?? 1}>
+                {loading ? (
+                    <Box mt={10}>
+                        <Skeleton
+                            height='50px'
+                            w='20rem'
+                        />
+                    </Box>
+                ) : (
+                    renderInputComponent(item)
 
-            )}
-        </GridItem >
-    ))
+                )}
+            </GridItem >
+        ))
+    ), [items, loading])
 
     const cancel = () => {
         handleCurrentPage(lastPage, null, false)

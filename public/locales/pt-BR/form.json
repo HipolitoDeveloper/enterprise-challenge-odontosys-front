@@ -16,8 +16,61 @@
   "CRM_PLACEHOLDER": "Digite o CRM",
   "CRM_LABEL": "CRM",
 
+  "ID_PLACEHOLDER": "Digite o ID",
+  "ID_LABEL": "ID",
+
+  "NM_PACIENTE_PLACEHOLDER": "Digite o Número do Paciente",
+  "NM_PACIENTE_LABEL": "Número do Paciente",
+
+  "DS_SEXO_PLACEHOLDER": "Digite o Sexo",
+  "DS_SEXO_LABEL": "Sexo",
+
+  "DT_NASCIMENTO_PLACEHOLDER": "Digite o Nascimento",
+  "DT_NASCIMENTO_LABEL": "Nascimento",
+
+  "DS_PESO_PLACEHOLDER": "Digite o Peso",
+  "DS_PESO_LABEL": "Peso",
+
+  "DS_ALTURA_PLACEHOLDER": "Digite a Altura",
+  "DS_ALTURA_LABEL": "Altura",
+
+  "CLINICA_ID_PLACEHOLDER": "Selecione a Clinica",
+  "CLINICA_ID_LABEL": "Clinica",
+
+  "NM_RUA_PLACEHOLDER": "Digite a rua",
+  "NM_RUA_LABEL": "Rua",
+
+  "NM_BAIRRO_PLACEHOLDER": "Digite o bairro",
+  "NM_BAIRRO_LABEL": "Bairro",
+
+  "NR_LOCAL_PLACEHOLDER": "Digite o local",
+  "NR_LOCAL_ID_LABEL": "Local",
+
+  "DOCTOR_ID_PLACEHOLDER": "Selecione o Médico",
+  "DOCTOR_ID_LABEL": "Médico",
+  "PATIENT_ID_PLACEHOLDER": "Selecione o paciente",
+  "PATIENT_ID_LABEL": "Paciente",
+  "PROCEDURE_ID_PLACEHOLDER": "Selecione o procedimento",
+  "PROCEDURE_ID_LABEL": "Procedimento",
+  "DT_HR_CONSULTA_PLACEHOLDER": "Digite a data e hora da consulta",
+  "DT_HR_CONSULTA_LABEL": "Data e Hora da Consulta",
+  "NR_CONSULTORIO_PLACEHOLDER": "Digite o número do consultório",
+  "NR_CONSULTORIO_LABEL": "Número do Consultório",
+
+  "NM_PROCEDIMENTO_PLACEHOLDER": "Digite o procedimento",
+  "NM_PROCEDIMENTO_LABEL": "Procedimento",
+
   "MATRICULA_ERROR": "Por favor, insira a matricula",
   "NOME_ERROR": "Por favor, insira o nome",
-  "CRM_ERROR": "Por favor, insira o CRM"
-
+  "CRM_ERROR": "Por favor, insira o CRM",
+  "ID_ERROR": "Por favor, insira o ID",
+  "NM_PACIENTE_ERROR": "Por favor, insira o Número do Paciente",
+  "DS_SEXO_ERROR": "Por favor, insira o Sexo",
+  "DT_NASCIMENTO_ERROR": "Por favor, insira o Nascimento",
+  "DS_PESO_ERROR": "Por favor, insira o Peso",
+  "DS_ALTURA_ERROR": "Por favor, insira o Altura",
+  "CLINICA_ID_ERROR": "Por favor, selecione a Clinica",
+  "DOCTOR_ID_ERROR": "Por favor, selecione o Médico",
+  "PATIENT_ID_ERROR": "Por favor, selecione o Paciente",
+  "PROCEDURE_ID_ERROR": "Por favor, selecione o Procedimento"
 }
