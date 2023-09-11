@@ -2,11 +2,10 @@ import NextAuth, {NextAuthOptions} from "next-auth"
 import {NextApiRequest, NextApiResponse} from 'next';
 
 import CredentialsProvider from "next-auth/providers/credentials"
+import {apiPost, AxiosClient} from "../../../hooks/api/useApi";
+import axios from "axios";
+import {Constants} from "../../../common/Constants";
 
-
-// export const AxiosAuth = axios.create({
-//     baseURL: Constants.BASE_URL_AUTHORIZATION,
-// });
 
 const options: NextAuthOptions = {
     pages: {
@@ -16,11 +15,25 @@ const options: NextAuthOptions = {
     },
     providers: [
         CredentialsProvider({
-                credentials: {},
+            credentials: {},
                 name: "Credentials",
-                authorize() {
-                    return {
-                        id: "", options: undefined, type: "credentials",
+                async authorize(credentials) {
+                    try {
+                        // const {data: responseData} = await AxiosAuth.post(Constants.BASE_URL_AUTH, credentials);
+
+                        // const {retorno, sucesso} = responseData
+                        if (true) {
+                            return {
+                                accessToken: 'autorizado',
+                                id: "", options: undefined, type: "credentials",
+
+                            }
+                        } else {
+                            return null
+                        }
+
+                    } catch (error: any) {
+                        throw new Error(error)
                     }
                 }
             }
@@ -29,12 +42,13 @@ const options: NextAuthOptions = {
     callbacks: {
         async jwt({token, user}: any) {
             if (user) {
-                token.accessToken = ""
+                token.accessToken = user?.token
             }
 
             return token
         },
-        async session({session, token, user}) {
+        async session({session, token, user}: any) {
+            session.accessToken = token.accessToken
 
             return session
 
