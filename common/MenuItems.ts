@@ -97,20 +97,20 @@ export const MenuItems: IMenuItem[] = [
             },
         ]
     },
-    {
-        name: "Financeiro",
-        route: Pages.Dashboard,
-        type: 'unique',
-        items: [],
-        icon: "IoReceipt",
-    },
-    {
-        name: "Fale Conosco",
-        route: Pages.Dashboard,
-        type: 'unique',
-        items: [],
-        icon: "IoPodium",
-    }
+    // {
+    //     name: "Financeiro",
+    //     route: Pages.Dashboard,
+    //     type: 'unique',
+    //     items: [],
+    //     icon: "IoReceipt",
+    // },
+    // {
+    //     name: "Fale Conosco",
+    //     route: Pages.Dashboard,
+    //     type: 'unique',
+    //     items: [],
+    //     icon: "IoPodium",
+    // }
 ]
 
 export const labelConversor = (page: Pages) => {
