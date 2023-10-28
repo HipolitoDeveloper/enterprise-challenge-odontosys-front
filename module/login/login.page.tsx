@@ -82,7 +82,7 @@ export const LoginPage: NextPage = () => {
                         <Input label={t("USERNAME")} variant="inline" width="100%"
                                register={register("login")}/>
                         <Input label={t("PASSWORD")} variant="inline" width="100%"
-                               register={register("password")}/>
+                               register={register("password")} type={'password'}/>
                         <Text color="bg">{t("FORGOT_PASSWORD")}</Text>
                     </Flex>
 
